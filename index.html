@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Backprop Room: pass the blame back</title>
+    <meta
+      name="description"
+      content="An interactive 3D explainer of a tiny neural network learning XOR. Step through one training iteration and watch backpropagation compute every gradient."
+    />
+    <meta name="theme-color" content="#0b0f1a" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0f1a'/%3E%3Cpath d='M7 9L16 16M7 23L16 16M16 16H25' stroke='%234fe0b0' stroke-width='2'/%3E%3Ccircle cx='7' cy='9' r='3' fill='%235fd4ff'/%3E%3Ccircle cx='7' cy='23' r='3' fill='%235fd4ff'/%3E%3Ccircle cx='16' cy='16' r='3.4' fill='%235fd4ff'/%3E%3Ccircle cx='25' cy='16' r='3' fill='%23ffb454'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <div id="loading" role="status"><span>Warming up the gradients…</span></div>
+
+    <section id="stage" aria-label="3D stage">
+      <canvas
+        id="gl"
+        tabindex="0"
+        aria-label="A small neural network standing on a bench in a dark room: two input nodes, two columns of three hidden neurons and one output neuron, joined by tubes whose thickness shows the size of each weight."
+      ></canvas>
+      <div id="labels" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+
+      <header class="brand">
+        <h1><span>Backprop Room</span> <b>Pass the blame back</b></h1>
+        <p class="sub">One tiny network, 25 numbers to tune, four XOR points. Step through a single training iteration and watch where every gradient comes from.</p>
+        <div class="stats" id="stats"></div>
+      </header>
+
+      <div class="centre">
+        <p id="say" aria-live="polite"></p>
+        <ol id="timeline" aria-label="Stages of one training iteration"></ol>
+      </div>
+
+      <div class="rightcol">
+        <aside id="console" aria-label="Controls"></aside>
+        <aside id="inspector" aria-label="Inspector" hidden></aside>
+      </div>
+
+      <div id="dock"></div>
+
+      <button id="readon" type="button" aria-label="Read the article">How it works <span aria-hidden="true">↓</span></button>
+      <div id="objects" class="sr-only" role="group" aria-label="Objects in the scene"></div>
+      <div id="legend" role="dialog" aria-modal="false" aria-label="How to read the scene" hidden></div>
+    </section>
+
+    <main id="article"></main>
+
+    <footer class="foot">
+      <p>
+        Style inspired by the work of Sael, <a href="https://sael.net" rel="noopener">sael.net</a>. This is an independent project and is not affiliated with or endorsed by Sael.
+      </p>
+      <p>
+        The engine mirrors two of the author's small projects,
+        <a href="https://github.com/Kacperxk/kacper-ml-journey/tree/main/phase0/projects/microtensor" rel="noopener">microtensor</a> and
+        <a href="https://github.com/Kacperxk/kacper-ml-journey/tree/main/phase0/projects/numpy_neural_net" rel="noopener">numpy_neural_net</a>. More of the author's work:
+        <a href="https://github.com/Kacperxk" rel="noopener">github.com/Kacperxk</a>.
+      </p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
